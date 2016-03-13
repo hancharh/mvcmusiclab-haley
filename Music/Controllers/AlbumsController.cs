@@ -29,6 +29,23 @@ namespace Music.Controllers
 
         }
 
+        public ActionResult ViewArtists(String Artist)
+        {
+            var artists = db.Albums.Include(a => a.Artist);
+            return View(artists.ToList());
+
+
+        }
+
+        public ActionResult BrowseAlbums(string genre)
+        {
+            var genreModel = db.Genres.Include("Albums")         
+                .Single(g => g.Name == genre);  
+            return View(genreModel);
+        }
+
+
+
         public ActionResult ShowSomeAlbums(int id)
         {
             var albums = db.Albums
@@ -58,6 +75,18 @@ namespace Music.Controllers
             {
                 return RedirectToAction("Index");
             }
+        }
+
+        public ActionResult AddGenre()
+        {
+            ViewBag.Genre = new SelectList(db.Genres.OrderByDescending(g => g.Name), "Name");
+            return View();
+        }
+
+        public ActionResult AddArtist()
+        {
+            ViewBag.Artist = new SelectList(db.Artists.OrderByDescending(g => g.Name), "Name");
+            return View();
         }
 
         // GET: Albums/Create

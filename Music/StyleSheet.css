@@ -1,0 +1,28 @@
+﻿body {
+}
+ .container .jumbotron{
+                border-radius: 20px;
+                background-color: #1f3043;
+                color: white;
+
+                }
+
+ .btn-primary{
+    background-color: #304b69 !important;
+    color: white !important;
+}
+
+  #btn1{
+    background-color: #af5050 !important;
+    color: white !important;
+}
+
+#btn2{
+    background-color: #af8050 !important;
+    color: white !important;
+}
+
+#btn3{
+    background-color: #376237 !important;
+    color: white !important;
+}

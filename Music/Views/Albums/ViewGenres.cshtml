@@ -1,0 +1,28 @@
+﻿<link href="~/Styles/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="StyleSheet.css">
+
+@model IEnumerable<Music.Models.Album>
+@{
+    ViewBag.Title = "View Genres";
+}
+
+<h2>List of Genres</h2>
+
+<a class="btn btn-default" href="/Albums/AddGenre" id="btn2">Add a Genre</a>
+<p></p>
+    @*<p>
+            @Html.ActionLink("Add a Genre", "AddGenre")
+        </p>*@
+
+    @*<h2>
+            @Html.DisplayNameFor(model => model.Genre)
+        </h2>*@
+
+    @foreach (var item in Model)
+    {
+        <li>
+            @Html.DisplayFor(modelItem => item.Genre.Name)
+        </li>
+    }
+<p></p>
+<a class="btn btn-default" href="/Home" id="btn2">Back to home</a>

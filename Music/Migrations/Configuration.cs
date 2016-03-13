@@ -29,22 +29,21 @@ namespace Music.Migrations
             //    );
             context.Genres.AddOrUpdate(
                 g => g.Name,
-                new Genre { Name = "Alternative" },
-                new Genre { Name = "Rock" },
-                new Genre { Name = "Indie"},
-                new Genre { Name = "Disco" },
-                new Genre { Name = "Classical" },
-                new Genre { Name = "Pop" }
+                new Genre {GenreID=1, Name = "Alternative" },
+                new Genre {GenreID=2, Name = "Rock" },
+                new Genre {GenreID=3, Name = "Indie"},
+                new Genre {GenreID=4, Name = "Punk"}
                 );
 
             context.Artists.AddOrUpdate(
                 a => a.Name,
                 new Artist { Name = "The White Stripes" },
                 new Artist { Name = "AC/DC" },
+                new Artist { Name = "The Who" },
                 new Artist { Name = "Modest Mouse" },
                 new Artist { Name = "Led Zeppelin" },
                 new Artist { Name = "The Shins" },
-                new Artist { Name = "Bee Gees" }
+                new Artist { Name = "Green Day"}
                 );
         }
     }

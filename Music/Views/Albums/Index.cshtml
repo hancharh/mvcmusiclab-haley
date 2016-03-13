@@ -1,51 +1,56 @@
 ﻿@model IEnumerable<Music.Models.Album>
 
+<link href="~/Styles/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="StyleSheet.css">
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Music Index";
 }
 
-<h2>Index</h2>
+<h2>Albums</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Artist)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Genre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th></th>
-    </tr>
+<a class="btn btn-default" href="/Albums/Create" id="btn1">Create New Entry</a>
+    @*<p>
+        @Html.ActionLink("Create New Entry", "Create")
+    </p>*@
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Artist)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Artist.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.AlbumID }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.AlbumID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.AlbumID })
+                    </td>*@
+            </tr>
+        }
+    </table>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Artist.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genre.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AlbumID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AlbumID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AlbumID })
-        </td>*@
-    </tr>
-}
-
-</table>
+<a class="btn btn-default" href="/Home" id="btn1">Back to home</a>

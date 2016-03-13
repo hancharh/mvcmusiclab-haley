@@ -14,6 +14,9 @@ namespace Music.Models
         public string Title { get; set; }
         [Display(Name ="Genre")]
         public int GenreID { get; set; }
+
+        [Required(ErrorMessage = "Name of genre is required")]
+        [StringLength(20, ErrorMessage = "Name must be shorter than 20 characters")]
         public Genre Genre { get; set; }
         [Required(ErrorMessage ="Price of album is required")]
         [Range(0.01, 100.00, ErrorMessage = "Price must be between 0.01 and 100.00")]
