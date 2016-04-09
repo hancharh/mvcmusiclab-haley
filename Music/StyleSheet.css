@@ -12,7 +12,7 @@
     color: white !important;
 }
 
-  #btn1{
+#btn1{
     background-color: #af5050 !important;
     color: white !important;
 }
@@ -26,3 +26,14 @@
     background-color: #376237 !important;
     color: white !important;
 }
+
+#btn4{
+    background-color: #463960 !important;
+    color: white !important;
+}
+/*hr {
+width: 90%;
+height: 5px;
+background-color: #376237;
+color: #376237;
+}*/

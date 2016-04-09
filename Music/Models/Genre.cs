@@ -11,5 +11,8 @@ namespace Music.Models
         public int GenreID { get; set; }
         public string Name { get; set; }
         public List<Album> Albums { get; set; }
+
+        //List<Album> distinct = Album.Distinct().ToList();
+        
     }
 }

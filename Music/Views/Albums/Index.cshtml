@@ -1,7 +1,12 @@
 ﻿@model IEnumerable<Music.Models.Album>
+@*@model PagedList.IPagedList<Music.Models.Album>
+    @using PagedList.Mvc;
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />*@
+
 
 <link href="~/Styles/bootstrap.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="StyleSheet.css">
+
 
 @{
     ViewBag.Title = "Music Index";
@@ -10,47 +15,74 @@
 <h2>Albums</h2>
 
 <a class="btn btn-default" href="/Albums/Create" id="btn1">Create New Entry</a>
-    @*<p>
+@*<p>
         @Html.ActionLink("Create New Entry", "Create")
     </p>*@
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Artist)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Genre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Artist.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Genre.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                @*<td>
-                        @Html.ActionLink("Edit", "Edit", new { id=item.AlbumID }) |
-                        @Html.ActionLink("Details", "Details", new { id=item.AlbumID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id=item.AlbumID })
-                    </td>*@
-            </tr>
-        }
-    </table>
+<p></p>
+<br />
 
-<a class="btn btn-default" href="/Home" id="btn1">Back to home</a>
+@using (Html.BeginForm("Index", "Album", FormMethod.Get))
+{
+    <p>
+        Search for an album title: @Html.TextBox("SearchString"@*, ViewBag.CurrentFilter as string*@)
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Artist", "Index", new
+           {
+               sortOrder = ViewBag.ArtistSortParam@*, currentFilter = ViewBag.CurrentFilter*@ })
+        </th>
+        <th>
+            @Html.ActionLink("Genre", "Index", new
+           {
+               sortOrder = ViewBag.GenreSortParam@*, currentFilter = ViewBag.CurrentFilter*@ })
+        </th>
+        <th>
+            @Html.ActionLink("Title", "Index", new
+           {
+               sortOrder = ViewBag.TitleSortParam@*, currentFilter = ViewBag.CurrentFilter*@ })
+        </th>
+        <th>
+            @Html.ActionLink("Price", "Index", new
+           {
+               sortOrder = ViewBag.PriceSortParam@*, currentFilter = ViewBag.CurrentFilter*@ })
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artist.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.AlbumID }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.AlbumID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.AlbumID })
+                </td>*@
+        </tr>
+    }
+</table>
+<br />
+@*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))*@
+
+
+<a class="btn btn-default" href="/Home" id="btn1" background-color="#af5050" color="white">Back to home</a>
