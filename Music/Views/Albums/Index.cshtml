@@ -21,7 +21,7 @@
 <p></p>
 <br />
 
-@using (Html.BeginForm("Index", "Album", FormMethod.Get))
+@using (Html.BeginForm())
 {
     <p>
         Search for an album title: @Html.TextBox("SearchString"@*, ViewBag.CurrentFilter as string*@)

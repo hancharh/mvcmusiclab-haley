@@ -24,6 +24,14 @@ namespace Music.Controllers
             ViewBag.GenreSortParam = sortOrder == "Genre" ? "genre_desc" : "Genre";
             ViewBag.TitleSortParam = sortOrder == "Title" ? "title_desc" : "Title";
             ViewBag.PriceSortParam = sortOrder == "Price" ? "price_desc" : "Price";
+            
+
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                albums = albums.Where(a => a.Title.Contains(searchString));
+            }
+
 
             switch (sortOrder)
             {
@@ -51,14 +59,10 @@ namespace Music.Controllers
 
             }
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                albums = albums.Where(a => a.Title.Contains(searchString));
-            }
 
 
 
-            return View(albums.ToList());
+                return View(albums.ToList());
         }
 
         public ActionResult ViewGenres(String Genre)
